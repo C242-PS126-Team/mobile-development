@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">True Colors</string>
+    <string name="title_home">Home</string>
+    <string name="title_color_blind_test">Color Blind Test</string>
+</resources>
