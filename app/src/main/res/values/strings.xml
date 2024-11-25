@@ -8,4 +8,10 @@
     <string name="rgb_result">(255, 0, 0)</string>
     <string name="hex">Hex</string>
     <string name="hex_result">#427D9D</string>
+    <string name="welcome_text">Welcome 👋</string>
+    <string name="tagline_text">See the world in true colors</string>
+    <string name="analyze">Analyze</string>
+    <string name="button_camera">button camera</string>
+    <string name="button_upload">button upload</string>
+    <string name="header">header</string>
 </resources>
