@@ -12,9 +12,6 @@ import com.example.truecolors.databinding.FragmentHomeBinding
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -28,10 +25,18 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        binding.btnCamera.setOnClickListener {
+            // Tindakan untuk tombol kamera
         }
+
+        binding.btnUpload.setOnClickListener {
+            // Tindakan untuk tombol upload
+        }
+
+        binding.btnAnalyzeWrapper.setOnClickListener {
+            // Tindakan untuk tombol analyze
+        }
+
         return root
     }
 
