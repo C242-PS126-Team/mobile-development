@@ -2,4 +2,10 @@
     <string name="app_name">True Colors</string>
     <string name="title_home">Home</string>
     <string name="title_color_blind_test">Color Blind Test</string>
+    <string name="name_color">Name Color</string>
+    <string name="color_name">blue</string>
+    <string name="rgb">RGB</string>
+    <string name="rgb_result">(255, 0, 0)</string>
+    <string name="hex">Hex</string>
+    <string name="hex_result">#427D9D</string>
 </resources>
