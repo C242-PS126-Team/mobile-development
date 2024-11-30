@@ -4,54 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="90dp"
     tools:context=".ui.home.HomeFragment">
-
-    <ImageView
-        android:id="@+id/iv_header"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:contentDescription="@string/header"
-        android:src="@drawable/header_rounded"
-        app:layout_constraintBottom_toBottomOf="@id/tv_tagline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_welcome"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:text="@string/welcome_text"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_tagline"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:paddingBottom="20dp"
-        android:text="@string/tagline_text"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/tv_welcome"
-        app:layout_constraintStart_toStartOf="@+id/tv_welcome"
-        app:layout_constraintTop_toBottomOf="@+id/tv_welcome" />
-
-
-    <!-- Placeholder for Image -->
 
     <ImageView
         android:id="@+id/iv_result"
         android:layout_width="0dp"
-        android:layout_height="383dp"
+        android:layout_height="0dp"
         android:contentDescription="@string/app_name"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
