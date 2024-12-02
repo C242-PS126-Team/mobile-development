@@ -22,10 +22,14 @@
     <string name="update">Update</string>
     <string name="color_blind_test_result">Color Blind Test Result</string>
     <string name="result_name">You Are Partially Color Blind</string>
-    <string name="quiz_name">Hello Your Name</string>
+    <string name="quiz_name">Hello There</string>
     <string name="here_are_your_results">Here are your results</string>
     <string name="more_detail">More Detail:</string>
     <string name="detail_result">Red-green: you have difficulty distinguishing between red and green</string>
     <string name="recommendation">Recommendation:</string>
     <string name="recommendation_result">To make sure you are truly color blind. We recommend that you check with an expert.</string>
+    <string name="ishihara_test">Ishihara Test</string>
+    <string name="subtitle">Are you ready to take the test?</string>
+    <string name="start">Start</string>
+    <string name="submit">SUBMIT</string>
 </resources>
