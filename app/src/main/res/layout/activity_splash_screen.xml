@@ -16,10 +16,11 @@
         android:id="@+id/splashText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/splash_text"
+        android:text="@string/tagline_text"
         android:textSize="16sp"
         android:textColor="@color/blue_500"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="50dp"
         android:layout_marginBottom="50dp" />
 </RelativeLayout>
