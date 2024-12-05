@@ -4,9 +4,9 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.truecolors.MainActivity
 import com.example.truecolors.data.test.TestConstant
 import com.example.truecolors.databinding.ActivityTestResultBinding
+import com.example.truecolors.ui.MainActivity
 
 @Suppress("DEPRECATION")
 class TestResultActivity : AppCompatActivity() {
