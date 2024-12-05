@@ -35,7 +35,9 @@
         <activity
             android:name=".ui.camera.CameraActivity"
             android:exported="false" />
-
+        <activity
+            android:name=".ui.test.TestQuestionActivity"
+            android:exported="false"/>
         <activity
             android:name=".ui.result.TestResultActivity"
             android:exported="false" />
@@ -56,8 +58,7 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
-        </provider> <!-- Trigger Google Play services to install the backported photo picker module. -->
-        <!-- suppress AndroidDomInspection -->
+        </provider>
         <service
             android:name="com.google.android.gms.metadata.ModuleDependencies"
             android:enabled="false"
