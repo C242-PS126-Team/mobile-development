@@ -14,6 +14,8 @@
     <string name="button_camera">button camera</string>
     <string name="button_upload">button upload</string>
     <string name="header">header</string>
+    <string name="splash_text">Color Detection Application for Color Blind Sufferers</string>
+    <string name="logo">logo</string>
     <string name="choose_photo">Choose Photo</string>
     <string name="name">Name</string>
     <string name="email">Email</string>
