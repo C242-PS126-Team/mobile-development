@@ -32,4 +32,10 @@
     <string name="subtitle">Are you ready to take the test?</string>
     <string name="start">Start</string>
     <string name="submit">SUBMIT</string>
+    <string name="question">What do you see on the plate?</string>
+    <string name="score">7/14</string>
+    <string name="color_blind_test">Color Blind Test</string>
+    <string name="finish">FINISH</string>
+    <string name="next">NEXT</string>
+    <string name="warning_option">Silakan pilih jawaban terlebih dahulu!</string>
 </resources>
