@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.truecolors.R
 import com.example.truecolors.data.test.TestConstant
 import com.example.truecolors.databinding.FragmentColorBlindTestBinding
-import com.example.truecolors.ui.MainActivity
 
 class ColorBlindTestFragment : Fragment() {
 
@@ -32,12 +32,8 @@ class ColorBlindTestFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val actionBar = (requireActivity() as MainActivity).supportActionBar
-        actionBar?.apply {
-            title = "Color Blind Test"
-            subtitle = null
-            setDisplayHomeAsUpEnabled(true)
-        }
+        binding.customAppBar.appBarTitle.text = getString(R.string.color_blind_test)
+        binding.customAppBar.appBarSubtitle.visibility = View.GONE
 
         binding.btnStart.setOnClickListener {
             if (binding.etName.text.toString().isEmpty()) {

@@ -4,13 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="90dp"
     tools:context=".ui.home.HomeFragment">
+
+    <!-- Custom App Bar -->
+    <include
+        android:id="@+id/customAppBar"
+        layout="@layout/custom_app_bar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <ImageView
         android:id="@+id/iv_result"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="25dp"
         android:contentDescription="@string/app_name"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
