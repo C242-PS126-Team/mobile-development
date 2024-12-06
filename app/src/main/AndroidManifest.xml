@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--suppress ALL -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -34,7 +35,9 @@
         <activity
             android:name=".ui.camera.CameraActivity"
             android:exported="false" />
-
+        <activity
+            android:name=".ui.test.TestQuestionActivity"
+            android:exported="false"/>
         <activity
             android:name=".ui.result.TestResultActivity"
             android:exported="false" />
@@ -43,8 +46,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.MainActivity"
-            android:exported="true"
-            android:label="@string/app_name">
+            android:exported="false">
 
         </activity>
 
@@ -56,8 +58,7 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
-        </provider> <!-- Trigger Google Play services to install the backported photo picker module. -->
-        <!-- suppress AndroidDomInspection -->
+        </provider>
         <service
             android:name="com.google.android.gms.metadata.ModuleDependencies"
             android:enabled="false"
