@@ -59,6 +59,8 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    implementation(libs.glide)
+
     //retrofit
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
@@ -80,4 +82,7 @@ dependencies {
 
     //animation
     implementation(libs.lottie)
+
+    //library crop image
+    implementation (libs.ucrop)
 }
