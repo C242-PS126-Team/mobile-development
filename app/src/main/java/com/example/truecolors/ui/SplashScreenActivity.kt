@@ -24,11 +24,11 @@ class SplashScreenActivity : AppCompatActivity() {
         val splashText = findViewById<TextView>(R.id.splashText)
 
         val fadeInImage = AlphaAnimation(0f, 1f)
-        fadeInImage.duration = 1500 // Durasi animasi dalam milidetik
+        fadeInImage.duration = 1500
         splashImage.startAnimation(fadeInImage)
 
         val fadeInText = AlphaAnimation(0f, 1f)
-        fadeInText.duration = 1500
+        fadeInText.duration = 1500  
 
         splashText.startAnimation(fadeInText)
 
