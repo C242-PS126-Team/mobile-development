@@ -5,9 +5,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <uses-feature android:name="android.hardware.camera" />
-
     <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" android:required="true"/>
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="28" />
@@ -33,6 +33,11 @@
         </activity>
 
         <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+
+        <activity
             android:name=".ui.camera.CameraActivity"
             android:exported="false" />
         <activity
@@ -52,7 +57,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="${applicationId}.fileprovider"
+            android:authorities="com.example.truecolors.provider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
