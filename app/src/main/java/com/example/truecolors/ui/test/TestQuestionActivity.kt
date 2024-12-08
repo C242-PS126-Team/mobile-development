@@ -3,170 +3,123 @@ package com.example.truecolors.ui.test
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
+import androidx.lifecycle.ViewModelProvider
 import com.example.truecolors.R
 import com.example.truecolors.data.test.TestConstant
-import com.example.truecolors.data.test.TestQuestion
 import com.example.truecolors.databinding.ActivityTestQuestionBinding
 import com.example.truecolors.ui.result.TestResultActivity
 
-class TestQuestionActivity : AppCompatActivity(), View.OnClickListener {
+class TestQuestionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTestQuestionBinding
-
-    private var mCurrentPosition: Int = 1
-    private var mQuestionsList: ArrayList<TestQuestion>? = null
-    private var mSelectedOptionPosition: Int = 0
-    private var mCorrectAnswers: Int = 0
-    private var mUserName: String? = null
+    private lateinit var viewModel: ColorBlindTestViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityTestQuestionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        viewModel = ViewModelProvider(this)[ColorBlindTestViewModel::class.java]
         supportActionBar?.hide()
 
-        // Check if mUserName is null
-        try {
-            mUserName = intent.getStringExtra(TestConstant.USER_NAME)
-            if (mUserName.isNullOrEmpty()) {
-                throw IllegalArgumentException("User name is missing")
+        if (viewModel.questionsList.value == null) {
+            val userName = intent.getStringExtra(TestConstant.USER_NAME) ?: ""
+            viewModel.setUserName(userName)
+
+            val questions = TestConstant.getQuestions()
+            if (questions.isEmpty()) {
+                Toast.makeText(this, "No questions available", Toast.LENGTH_SHORT).show()
+                finish()
+                return
             }
-        } catch (e: Exception) {
-            Log.e("TestQuestionActivity", "Error getting username: ${e.message}")
-            Toast.makeText(this, "User name is missing", Toast.LENGTH_SHORT).show()
-            finish()
-            return
+            viewModel.setQuestions(questions)
         }
 
-        // Check if questions are null or empty
-        try {
-            mQuestionsList = TestConstant.getQuestions()
-            if (mQuestionsList.isNullOrEmpty()) {
-                throw IllegalStateException("Questions list is empty or null")
-            }
-        } catch (e: Exception) {
-            Log.e("TestQuestionActivity", "Error loading questions: ${e.message}")
-            Toast.makeText(this, "No questions available", Toast.LENGTH_SHORT).show()
-            finish()
-            return
+        setupObservers()
+        setupListeners()
+    }
+
+    private fun setupObservers() {
+        viewModel.currentPosition.observe(this) { position ->
+            setQuestion(position)
         }
+    }
 
-        setQuestion()
-
-        binding.tvOption1.setOnClickListener(this)
-        binding.tvOption2.setOnClickListener(this)
-        binding.tvOption3.setOnClickListener(this)
-        binding.btnSubmit.setOnClickListener(this)
+    private fun setupListeners() {
+        binding.tvOption1.setOnClickListener { selectOption(1) }
+        binding.tvOption2.setOnClickListener { selectOption(2) }
+        binding.tvOption3.setOnClickListener { selectOption(3) }
+        binding.btnSubmit.setOnClickListener { handleSubmit() }
     }
 
     @SuppressLint("SetTextI18n")
-    private fun setQuestion() {
-        try {
-            val question = mQuestionsList!![mCurrentPosition - 1]
+    private fun setQuestion(position: Int) {
+        val question = viewModel.questionsList.value?.getOrNull(position - 1) ?: return
 
-            defaultOptionsView()
+        binding.tvOption1.text = question.optionOne
+        binding.tvOption2.text = question.optionTwo
+        binding.tvOption3.text = question.optionThree
+        binding.ivQuestion.setImageResource(question.plate)
 
-            if (mCurrentPosition == mQuestionsList!!.size) {
-                binding.btnSubmit.text = getText(R.string.finish)
-            } else {
-                binding.btnSubmit.text = getText(R.string.submit)
-            }
+        binding.pb.progress = position
+        binding.pb.max = viewModel.questionsList.value?.size ?: 0
+        binding.tvPb.text = "$position/${binding.pb.max}"
 
-            binding.pb.progress = mCurrentPosition
-            binding.pb.max = mQuestionsList!!.size
-            binding.tvPb.text = "$mCurrentPosition" + "/" + binding.pb.max
-
-            binding.tvOption1.text = question.optionOne
-            binding.tvOption2.text = question.optionTwo
-            binding.tvOption3.text = question.optionThree
-            binding.ivQuestion.setImageResource(question.plate)
-        } catch (e: Exception) {
-            Log.e("TestQuestionActivity", "Error setting question: ${e.message}")
+        binding.btnSubmit.text = if (position == binding.pb.max) {
+            getString(R.string.finish)
+        } else {
+            getString(R.string.submit)
         }
+
+        defaultOptionsView()
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     private fun defaultOptionsView() {
-        try {
-            val options = ArrayList<TextView>()
-            options.add(0, binding.tvOption1)
-            options.add(1, binding.tvOption2)
-            options.add(2, binding.tvOption3)
-
-            for (option in options) {
-                option.setTextColor(ContextCompat.getColor(this, R.color.blue_500))
-                option.typeface = ResourcesCompat.getFont(this, R.font.poppins)
-                option.background = ContextCompat.getDrawable(this, R.drawable.rectangle1)
-            }
-        } catch (e: Exception) {
-            Log.e("TestQuestionActivity", "Error resetting options: ${e.message}")
+        val options = listOf(binding.tvOption1, binding.tvOption2, binding.tvOption3)
+        for (option in options) {
+            option.setTextColor(getColor(R.color.blue_500))
+            option.background = getDrawable(R.drawable.rectangle1)
         }
     }
 
-    override fun onClick(v: View?) {
-        try {
-            when (v?.id) {
-                R.id.tv_option1 -> {
-                    selectedOptionView(binding.tvOption1, 1)
-                }
-                R.id.tv_option2 -> {
-                    selectedOptionView(binding.tvOption2, 2)
-                }
-                R.id.tv_option3 -> {
-                    selectedOptionView(binding.tvOption3, 3)
-                }
-                R.id.btn_submit -> {
-                    if (mSelectedOptionPosition == 0) {
-                        Toast.makeText(this, getText(R.string.warning_option), Toast.LENGTH_SHORT).show()
-                    } else {
-                        if (mSelectedOptionPosition == mQuestionsList!![mCurrentPosition - 1].correctAnswer) {
-                            mCorrectAnswers++
-                            Log.d("TestQuestionActivity", "Correct Answers incremented to: $mCorrectAnswers")
-                        }
+    private fun selectOption(option: Int) {
+        viewModel.setSelectedOption(option)
+        defaultOptionsView()
 
-                        if (mCurrentPosition == mQuestionsList!!.size) {
-                            binding.btnSubmit.text = getText(R.string.finish)
-
-                            val intent = Intent(this, TestResultActivity::class.java)
-                            intent.putExtra(TestConstant.USER_NAME, mUserName)
-                            intent.putExtra(TestConstant.CORRECT_ANSWERS, mCorrectAnswers)
-                            intent.putExtra(TestConstant.TOTAL_QUESTIONS, mQuestionsList!!.size)
-                            startActivity(intent)
-                            finish()
-                        } else {
-                            binding.btnSubmit.text = getText(R.string.next)
-                        }
-
-                        mSelectedOptionPosition = 0
-
-                        if (mCurrentPosition < mQuestionsList!!.size) {
-                            mCurrentPosition++
-                            setQuestion()
-                        }
-                    }
-                }
-            }
-        } catch (e: Exception) {
-            Log.e("TestQuestionActivity", "Error in onClick: ${e.message}")
+        val selectedView = when (option) {
+            1 -> binding.tvOption1
+            2 -> binding.tvOption2
+            3 -> binding.tvOption3
+            else -> null
         }
+
+        selectedView?.setBackgroundResource(R.drawable.rectangle_rounded_blue_100)
     }
 
-    private fun selectedOptionView(tv: TextView, selectedOption: Int) {
-        try {
-            defaultOptionsView()
-            mSelectedOptionPosition = selectedOption
+    private fun handleSubmit() {
+        val position = viewModel.currentPosition.value ?: 1
+        val question = viewModel.questionsList.value?.getOrNull(position - 1)
 
-            tv.setTextColor(ContextCompat.getColor(this, R.color.blue_500))
-            tv.typeface = ResourcesCompat.getFont(this, R.font.poppins)
-            tv.background = ContextCompat.getDrawable(this, R.drawable.rectangle_rounded_blue_100)
-        } catch (e: Exception) {
-            Log.e("TestQuestionActivity", "Error in selectedOptionView: ${e.message}")
+        if (question != null) {
+            val selectedOption = viewModel.selectedOptionPosition.value ?: 0
+            if (selectedOption == question.correctAnswer) {
+                viewModel.incrementCorrectAnswers()
+            }
+
+            if (position == viewModel.questionsList.value?.size) {
+                val intent = Intent(this, TestResultActivity::class.java)
+                intent.putExtra(TestConstant.USER_NAME, viewModel.userName.value)
+                intent.putExtra(TestConstant.CORRECT_ANSWERS, viewModel.correctAnswers.value)
+                intent.putExtra(TestConstant.TOTAL_QUESTIONS, viewModel.questionsList.value?.size)
+                startActivity(intent)
+                finish()
+            } else {
+                viewModel.nextQuestion()
+            }
+        } else {
+            Toast.makeText(this, getString(R.string.warning_option), Toast.LENGTH_SHORT).show()
         }
     }
 }
