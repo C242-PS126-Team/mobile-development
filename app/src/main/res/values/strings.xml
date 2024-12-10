@@ -40,10 +40,6 @@
     <string name="finish">FINISH</string>
     <string name="next">NEXT</string>
     <string name="warning_option">Silakan pilih jawaban terlebih dahulu!</string>
-<<<<<<< HEAD
-    <string name="Accuracy">Accuracy : 90%</string>
-=======
     <string name="accuracy">Accuracy</string>
     <string name="color_scan_result">Color Scan Result</string>
->>>>>>> 20cfbfb0c0d78acc86d62cb61553999d56042c68
 </resources>
