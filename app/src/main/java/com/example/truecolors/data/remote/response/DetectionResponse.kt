@@ -2,19 +2,19 @@ package com.example.truecolors.data.remote.response
 
 import com.google.gson.annotations.SerializedName
 
-data class ScanResponse(
+data class DetectionResponse(
 
 	@field:SerializedName("status_code")
-	val statusCode: Int? = null,
+	val statusCode: Int,
 
 	@field:SerializedName("id")
-	val id: String? = null,
+	val id: String,
 
 	@field:SerializedName("predictions")
-	val predictions: Predictions? = null,
+	val predictions: Predictions,
 
 	@field:SerializedName("status")
-	val status: String? = null
+	val status: String
 )
 
 data class Predictions(
@@ -32,7 +32,7 @@ data class Predictions(
 	val saturationHsv: String? = null,
 
 	@field:SerializedName("confidence")
-	val confidence: Any? = null,
+	val confidence: Double? = null,
 
 	@field:SerializedName("hue")
 	val hue: String? = null,

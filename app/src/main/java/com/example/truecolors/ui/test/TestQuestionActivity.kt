@@ -104,6 +104,11 @@ class TestQuestionActivity : AppCompatActivity() {
 
         if (question != null) {
             val selectedOption = viewModel.selectedOptionPosition.value ?: 0
+            if (selectedOption == 0) {
+                Toast.makeText(this, getString(R.string.warning_option), Toast.LENGTH_SHORT).show()
+                return
+            }
+
             if (selectedOption == question.correctAnswer) {
                 viewModel.incrementCorrectAnswers()
             }
@@ -121,5 +126,6 @@ class TestQuestionActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this, getString(R.string.warning_option), Toast.LENGTH_SHORT).show()
         }
+
     }
 }
