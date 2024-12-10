@@ -40,4 +40,5 @@
     <string name="finish">FINISH</string>
     <string name="next">NEXT</string>
     <string name="warning_option">Silakan pilih jawaban terlebih dahulu!</string>
+    <string name="Accuracy">Accuracy : 90%</string>
 </resources>

@@ -14,10 +14,27 @@
         android:layout_height="300dp"
         android:layout_marginTop="20dp"
         android:contentDescription="@string/app_name"
-        app:srcCompat="@drawable/ic_place_holder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_place_holder" />
+
+
+    <TextView
+        android:id="@+id/tv_accuracy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:paddingTop="10dp"
+        android:text="@string/Accuracy"
+        android:textAlignment="center"
+        android:textColor="@color/blue_500"
+        android:textSize="16sp"
+        android:fontFamily="@font/poppins_bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_result" />
+
 
     <LinearLayout
         android:id="@+id/ll1"
@@ -28,7 +45,7 @@
         android:background="@drawable/bg_blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_result">
+        app:layout_constraintTop_toBottomOf="@+id/tv_accuracy">
 
         <TextView
             android:layout_width="match_parent"
