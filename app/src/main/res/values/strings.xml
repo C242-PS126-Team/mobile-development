@@ -40,4 +40,6 @@
     <string name="finish">FINISH</string>
     <string name="next">NEXT</string>
     <string name="warning_option">Silakan pilih jawaban terlebih dahulu!</string>
+    <string name="accuracy">Accuracy</string>
+    <string name="color_scan_result">Color Scan Result</string>
 </resources>
