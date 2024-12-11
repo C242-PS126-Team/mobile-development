@@ -45,7 +45,11 @@ This feature provides a simple **Ishihara test** that can be used to identify po
 
 https://github.com/user-attachments/assets/81210cc4-597f-45c9-b7e0-d1c421496769
 
+## Download True Colors App
 
+You are guys can install True Colors App through this link ⬇️⬇️⬇️:
+
+https://github.com/C242-PS126-Team/mobile-development/tree/master/APK
 
 
 
