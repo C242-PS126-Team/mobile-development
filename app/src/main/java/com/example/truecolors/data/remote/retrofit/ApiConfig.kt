@@ -1,5 +1,6 @@
 package com.example.truecolors.data.remote.retrofit
 
+import com.example.truecolors.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -17,7 +18,7 @@ object ApiConfig {
             .writeTimeout(30, TimeUnit.SECONDS)
             .build()
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.truecolor.my.id/")
+            .baseUrl(BuildConfig.API_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()

@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.result.ScanResultActivity">
 
+
     <include
         android:id="@+id/customAppBar"
         layout="@layout/custom_app_bar"

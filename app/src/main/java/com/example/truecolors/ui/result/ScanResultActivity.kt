@@ -18,8 +18,10 @@ class ScanResultActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityScanResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         supportActionBar?.hide()
 

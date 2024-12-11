@@ -21,11 +21,11 @@ android {
     buildTypes {
 
         debug {
-            buildConfigField("String", "API_URL", "\"https://event-api.dicoding.dev/\"")
+            buildConfigField("String", "API_URL", "\"https://api.truecolor.my.id/\"")
         }
 
         release {
-            buildConfigField("String", "API_URL", "\"https://event-api.dicoding.dev/\"")
+            buildConfigField("String", "API_URL", "\"https://api.truecolor.my.id/\"")
 
             isMinifyEnabled = false
             proguardFiles(
