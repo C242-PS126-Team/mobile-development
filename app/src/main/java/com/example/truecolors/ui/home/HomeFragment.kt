@@ -144,7 +144,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun showLoading(isLoading: Boolean) {
-        binding.pbScan.visibility = if (isLoading) View.VISIBLE else View.GONE
+        binding.loadingAnimation.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
     @SuppressLint("QueryPermissionsNeeded")
