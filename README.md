@@ -40,3 +40,12 @@ This feature provides a simple **Ishihara test** that can be used to identify po
    git clone https://github.com/C242-PS126-Team/mobile-development.git
 2. Open the project in Android Studio.
 3. Build and run the application on an emulator or physical device.
+
+## Demo True Colors App 📱
+
+https://github.com/user-attachments/assets/81210cc4-597f-45c9-b7e0-d1c421496769
+
+
+
+
+
