@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.truecolors.data.remote.repository.DetectionRepository
 import com.example.truecolors.ui.home.HomeViewModel
 
+@Suppress("UNCHECKED_CAST")
 class ViewModelFactory(private val detectionRepository: DetectionRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {

@@ -27,7 +27,7 @@ class TestQuestionActivity : AppCompatActivity() {
             val userName = intent.getStringExtra(TestConstant.USER_NAME) ?: ""
             viewModel.setUserName(userName)
 
-            val questions = TestConstant.getQuestions()
+            val questions = TestConstant.getQuestions().shuffled()
             if (questions.isEmpty()) {
                 Toast.makeText(this, "No questions available", Toast.LENGTH_SHORT).show()
                 finish()
